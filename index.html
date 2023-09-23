@@ -69,100 +69,100 @@
 
 
 			<ul class="list-unstyled components mb-5">
-				<li class="active">
+				<li class="active list-group-item">
 					<a onclick="
 						location.reload();
 						" data-toggle="tab">Department Profile</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab2" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Faculty
 						Profiles</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab3" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Board of
 						Studies</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab19" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Syllabus</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab4" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Physical
 						Facilities</a>
 				</li>
 
-				<li>
+				<li class="list-group-item">
 					<a href="#tab5" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Department
 						Library</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab6" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">MoUs</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab7" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Faculty
 						Development<br> Programs</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab8" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Faculty
 						Achievements</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab9" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Workshops/SOC/Seminars/<br>Guest Lectures</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab10" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Student
 						Achievements</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab11" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Placements</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab12" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Merit
 						Scholarship/Academic Toppers</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab13" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Technical
 						Association</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab14" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Training
 						Activities</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab15" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Newsletters</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab16" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Extra-Curricular Activities</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab17" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Hackthons</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab18" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">e-Resources</a>
 				</li>
 
-				<li>
+				<li class="list-group-item">
 					<a href="#tab20" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Handbooks</a>
 				</li>
-				<li>
+				<li class="list-group-item">
 					<a href="#tab21" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"
 						data-toggle="tab">Contact</a>
 				</li>
@@ -4712,7 +4712,7 @@
 						<div class="nav-content">
 							<ul class="fdp-list">
 								<li class="fdp-item">
-									B.Tech - V20 Syllabus- <a href="#" id="pdfDOWNLOADER11">View</a>
+									B.Tech - V20 Syllabus - <a href="#" id="pdfDOWNLOADER11">View</a>
 								</li>
 								<li class="fdp-item">
 									B.Tech - V18 Syllabus - <a href="#" id="pdfDOWNLOADER11">View</a>
@@ -5919,7 +5919,7 @@
 				contentContainer.innerHTML = selectedTab.innerHTML;
 			}
 			document.querySelector(".sidebar").classList.remove("active");
-			removeActiveFromAnchors();
+			removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
 			// Remove the overlay
 			document.querySelector(".overlay").classList.remove("active");
 		}
@@ -5930,20 +5930,21 @@
 		dismissButton.addEventListener("click", function () {
 			// Hide the sidebar and reset active states
 			document.querySelector(".sidebar").classList.remove("active");
-			removeActiveFromAnchors();
+			removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
 
 			// Restore the original content in the content container
-
+			contentContainer.innerHTML = originalContentHTML;
 		});
 
 		const originalContentHTML = contentContainer.innerHTML;
 
-		function removeActiveFromAnchors() {
+		function removeActiveFromAnchorsAndLi() {
 			const anchors = document.querySelectorAll(".list-unstyled.components li a");
 			anchors.forEach((anchor) => {
 				anchor.classList.remove("active");
+				const li = anchor.parentElement; // Get the parent <li>
+				li.classList.remove("active");
 			});
-
 		}
 
 		// Add click event listeners to navlinks
@@ -5951,12 +5952,19 @@
 		navlinks.forEach((link) => {
 			link.addEventListener("click", function (e) {
 				e.preventDefault();
-				removeActiveFromAnchors();
+				removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
+
+				// Activate the clicked anchor and its parent <li>
 				this.classList.add("active");
+				const li = this.parentElement; // Get the parent <li>
+				li.classList.add("active");
+
 				show(this.getAttribute("href"));
 			});
 		});
 	</script>
+
+
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
