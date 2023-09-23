@@ -348,7 +348,6 @@ a[aria-expanded="true"] {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: rgba(51, 51, 51, 0.7);
   z-index: 998;
   opacity: 0;
   transition: all 0.5s ease-in-out;
@@ -1058,7 +1057,7 @@ body a {
   /* CSS for the active tab button */
   .nav-link.active {
     background-color: #fff;
-    transform: translateY(2.6px);
+    transform: translateY(2.8px);
     color: #850209 !important;
     border: 3px solid #b1040e;
     border-radius: 5px;
