@@ -1072,7 +1072,7 @@ body a {
   /* CSS for the active tab button */
   .nav-link.active {
     background-color: #fff;
-    transform: translateY(2.8px);
+    transform: translateY(3px);
     color: #850209 !important;
     border: 3px solid #b1040e;
     border-radius: 5px;
