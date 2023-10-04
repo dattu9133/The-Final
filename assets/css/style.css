@@ -149,6 +149,14 @@ a[aria-expanded="true"] {
   background: #444;
   border-radius: 10px;
 }
+
+.sidebar a {
+  transition: all ease-in-out 0.2s;
+}
+.sidebar a:hover {
+  background: #444 !important;
+  border-radius: 10px;
+}
 .sidebar ul ul li.active > a {
   background: #555;
 }
