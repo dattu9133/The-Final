@@ -5919,7 +5919,7 @@
 				contentContainer.innerHTML = selectedTab.innerHTML;
 			}
 			document.querySelector(".sidebar").classList.remove("active");
-			removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
+			removeActiveFromAnchors();
 			// Remove the overlay
 			document.querySelector(".overlay").classList.remove("active");
 		}
@@ -5930,21 +5930,28 @@
 		dismissButton.addEventListener("click", function () {
 			// Hide the sidebar and reset active states
 			document.querySelector(".sidebar").classList.remove("active");
-			removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
+			removeActiveFromAnchors();
 
 			// Restore the original content in the content container
-			contentContainer.innerHTML = originalContentHTML;
+
 		});
 
 		const originalContentHTML = contentContainer.innerHTML;
 
-		function removeActiveFromAnchorsAndLi() {
+		function removeActiveFromAnchors() {
 			const anchors = document.querySelectorAll(".list-unstyled.components li a");
 			anchors.forEach((anchor) => {
 				anchor.classList.remove("active");
-				const li = anchor.parentElement; // Get the parent <li>
-				li.classList.remove("active");
 			});
+
+		}
+
+		function removeActiveFromLis() {
+			const anchors = document.querySelectorAll(".list-unstyled.components li");
+			anchors.forEach((anchor) => {
+				anchor.classList.remove("active");
+			});
+
 		}
 
 		// Add click event listeners to navlinks
@@ -5952,13 +5959,17 @@
 		navlinks.forEach((link) => {
 			link.addEventListener("click", function (e) {
 				e.preventDefault();
-				removeActiveFromAnchorsAndLi(); // Remove active from both anchors and <li>
-
-				// Activate the clicked anchor and its parent <li>
+				removeActiveFromAnchors();
 				this.classList.add("active");
-				const li = this.parentElement; // Get the parent <li>
-				li.classList.add("active");
-
+				show(this.getAttribute("href"));
+			});
+		});
+		const navlink = document.querySelectorAll(".list-unstyled.components li ");
+		navlink.forEach((link) => {
+			link.addEventListener("click", function (e) {
+				e.preventDefault();
+				removeActiveFromLis();
+				this.classList.add("active");
 				show(this.getAttribute("href"));
 			});
 		});
