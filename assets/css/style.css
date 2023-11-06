@@ -1576,7 +1576,9 @@ MISSION CSS STARTS ---------------------------> */
 #pdfDownloader8,
 #pdfDownloader9 {
   text-decoration: none;
-  color: #850209;
+    color: #850209 !important;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 /* body {
